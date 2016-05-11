@@ -17,6 +17,13 @@ namespace WebApiTest.Providers
             return Task.FromResult<object>(null);
         }
 
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            context.AdditionalResponseParameters.Add("Cliente", "Leonardo");
+
+            return Task.FromResult<object>(null);
+        }
+
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext c)
         {
             if (c.UserName == "leonardo" && c.Password == "123123")
